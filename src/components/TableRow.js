@@ -11,7 +11,7 @@ class TableRow extends Component {
   }
 
   onDelete() {
-    HttpHelper.delete(`${baseUrl}user/${this.props.obj._id}`)
+    HttpHelper.delete(`${baseUrl}api/v1/user/hard/${this.props.obj._id}`)
       .then(response => {
         console.log("User deleted!");
         this.props.onDeleteMessage(this.props.obj._id);

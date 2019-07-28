@@ -18,9 +18,9 @@ export default class Edit extends Component {
         this.state = new User();
     }
     componentDidMount() {
-        HttpHelper.get(`${baseUrl}user/${this.props.match.params.id}`)
+        HttpHelper.get(`${baseUrl}api/v1/user/${this.props.match.params.id}`)
             .then((response) => {
-                const user = new User(response.data).toJson();
+                const user = new User(response.data[0]).toJson();
                 this.setState(user);
             })
             .catch(function (error) {
@@ -53,7 +53,7 @@ export default class Edit extends Component {
     }
     onUpdate() {
         const userPayload = new User(this.state).toJson();
-        HttpHelper.put(`${baseUrl}user/${userPayload._id}`, userPayload).then((response) => {
+        HttpHelper.put(`${baseUrl}api/v1/user/${userPayload._id}`, userPayload).then((response) => {
             this.setState({ _id: response.data._id });
             // Clear data
             this.setState(new User());

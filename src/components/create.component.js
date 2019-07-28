@@ -42,7 +42,7 @@ export default class Create extends Component {
   }
   onSubmit() {
     const userPayload = new User(this.state).toJson();
-    HttpHelper.post(`${baseUrl}user`, userPayload)
+    HttpHelper.post(`${baseUrl}api/v1/user`, userPayload)
       .then(response => {
         console.log("Data: response:", response);
         // Clear data
